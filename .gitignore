@@ -1,0 +1,90 @@
+Last login: Mon Jun 25 11:38:00 on ttys009
+You have mail.
+➜  code-challenges git status
+fatal: Not a git repository (or any of the parent directories): .git
+➜  code-challenges pip freeze > requirements.txt
+➜  code-challenges git init
+Initialized empty Git repository in /Users/frank/Development/personal/code-challenges/.git/
+➜  code-challenges git:(master) ✗ git git commit -m "add curriculum, add insertion sort"
+git: 'git' is not a git command. See 'git --help'.
+
+The most similar command is
+	init
+➜  code-challenges git:(master) ✗ git commit -m "add curriculum, add insertion sort" 
+On branch master
+
+Initial commit
+
+Untracked files:
+	.DS_Store
+	.ipynb_checkpoints/
+	Lernplan.ipynb
+	requirements.txt
+	sorting/
+
+nothing added to commit but untracked files present
+➜  code-challenges git:(master) ✗ vi .gitingore
+➜  code-challenges git:(master) ✗ git status
+On branch master
+
+No commits yet
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+	.DS_Store
+	.gitingore
+	.ipynb_checkpoints/
+	Lernplan.ipynb
+	requirements.txt
+	sorting/
+
+nothing added to commit but untracked files present (use "git add" to track)
+➜  code-challenges git:(master) ✗ vi .gitingore 
+➜  code-challenges git:(master) ✗ vi .gitingore
+➜  code-challenges git:(master) ✗ vi .gitingore
+➜  code-challenges git:(master) ✗ vi .gitingore
+➜  code-challenges git:(master) ✗ vi .gitignore
+➜  code-challenges git:(master) ✗ vi .gitingore
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# PyInstaller
+#  Usually these files are written by a python script from a template
+#  before PyInstaller builds the exe, so as to inject date/other infos into it.
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+".gitingore" 104L, 1203C
+.DS_Store
+.ipynb_checkpoints
