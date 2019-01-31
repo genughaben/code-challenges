@@ -7,3 +7,5 @@ I dedicate the code and especially the resulting snowflakes to my beloved parter
 
 <img src="https://github.com/genughaben/code-challenges/blob/master/fractals/snow_flake_heart_for_JH.png?raw=true"
      alt="Heart of Dedication"/>
+
+#romanticprogramming
