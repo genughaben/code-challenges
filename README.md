@@ -1,6 +1,7 @@
 # code-challenges
 
-## fractals snwoflakes based on Koch curves
+## fractals 
+snwoflakes based on Koch curves
 
 I dedicate the code and especially the resulting snowflakes to my beloved parter JH.
 
