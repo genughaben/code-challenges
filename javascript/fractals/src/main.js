@@ -1,6 +1,5 @@
 import { Snowflake } from './snowflake.js'
 import { Segment } from '../../lib/segment.js'
-import { CanvasHelper } from '../../lib/canvas.js'
 
 // triangle base
 // let startSegment1 = Segment.createFromCoordinates(600,600,300,600);
@@ -20,15 +19,10 @@ var segments = [
   startSegment4
 ];
 
-let canvas = new CanvasHelper().create();
-var container = document.querySelector('#container');
-// var container = document.getElementById("container");
-container.append(canvas);
-
-let snowflake = new Snowflake(segments);
+let snowflake = new Snowflake(segments, "container");
 snowflake.draw()
 
 document.body.addEventListener('click', function(){
-  sn.createChilden()
-  sn.draw();
+  snowflake.createChilden()
+  snowflake.draw();
 }, true);

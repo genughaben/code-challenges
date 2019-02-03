@@ -2,10 +2,12 @@
   'use strict';
 
   class CanvasHelper {
-    constructor(width=900, height=900){
+    constructor(selector_id, width=900, height=900){
+      this.selector_id = selector_id;
       this._width = width;
       this._height = height;
       this.canvas = this.create();
+      this.append();
     }
 
     get width() {
@@ -25,11 +27,22 @@
         canvas.style.zIndex = 8;
         canvas.style.position = "absolute";
         canvas.style.border = "1px solid";
+        return canvas;
     }
 
-    get context(){
+    append(){
+      var parent = document.getElementById(this.selector_id);
+      parent.append(this.canvas);
+    }
+
+    context(){
         var context = this.canvas.getContext("2d");
         return context;
+    }
+
+    clear(){
+      let context = this.context();
+      context.clearRect(0, 0, this.width, this.height);
     }
 
     printValue(string, selector_id){
@@ -138,8 +151,9 @@
   }
 
   class Snowflake {
-    constructor(segments){
+    constructor(segments, selector_id){
       this.segments = segments;
+      this.canvasHelper = new CanvasHelper(selector_id);
     }
 
     get length(){
@@ -149,7 +163,7 @@
     createChilden(){
       let childSegments = [];
       for (let i = 0; i < this.length; i++){
-        let segment = segments[i];
+        let segment = this.segments[i];
         let segment_a = segment.scalmult(1/3);
         let b_helper = segment.scalmult(2/3);
         let segment_b = new Segment(b_helper.end, segment.end);
@@ -164,11 +178,12 @@
       this.segments = childSegments;
     }
 
-    draw(segments, canvas) {
-      let context = canvas.context;
+    draw() {
+      let canvas = this.canvasHelper.canvas;
+      let context = this.canvasHelper.context();
       context.clearRect(0, 0, canvas.width, canvas.height);
-      for (let i = 0; i < segments.length; i++){
-        segments[i].display(context);
+      for (let i = 0; i < this.segments.length; i++){
+        this.segments[i].display(context);
       }
     }
   }
@@ -184,24 +199,19 @@
   let startSegment3 = Segment.createFromCoordinates(300,300,600,300);
   let startSegment4 = Segment.createFromCoordinates(600,300,600,600);
 
-  var segments$1 = [
+  var segments = [
     startSegment1,
     startSegment2,
     startSegment3,
     startSegment4
   ];
 
-  let canvas = new CanvasHelper().create();
-  var container = document.querySelector('#container');
-  // var container = document.getElementById("container");
-  container.append(canvas);
-
-  let snowflake = new Snowflake(segments$1);
+  let snowflake = new Snowflake(segments, "container");
   snowflake.draw();
 
   document.body.addEventListener('click', function(){
-    sn.createChilden();
-    sn.draw();
+    snowflake.createChilden();
+    snowflake.draw();
   }, true);
 
 }());

@@ -2,8 +2,9 @@ import { CanvasHelper } from '../../lib/canvas.js';
 import { Segment } from '../../lib/segment.js';
 
 export class Snowflake {
-  constructor(segments){
+  constructor(segments, selector_id){
     this.segments = segments;
+    this.canvasHelper = new CanvasHelper(selector_id);
   }
 
   get length(){
@@ -13,7 +14,7 @@ export class Snowflake {
   createChilden(){
     let childSegments = []
     for (let i = 0; i < this.length; i++){
-      let segment = segments[i];
+      let segment = this.segments[i];
       let segment_a = segment.scalmult(1/3);
       let b_helper = segment.scalmult(2/3);
       let segment_b = new Segment(b_helper.end, segment.end);
@@ -28,11 +29,12 @@ export class Snowflake {
     this.segments = childSegments;
   }
 
-  draw(segments, canvas) {
-    let context = canvas.context;
+  draw() {
+    let canvas = this.canvasHelper.canvas;
+    let context = this.canvasHelper.context();
     context.clearRect(0, 0, canvas.width, canvas.height);
-    for (let i = 0; i < segments.length; i++){
-      segments[i].display(context);
+    for (let i = 0; i < this.segments.length; i++){
+      this.segments[i].display(context);
     }
   }
 }
