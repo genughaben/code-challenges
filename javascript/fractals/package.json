@@ -1,0 +1,15 @@
+{
+  "name": "fractals",
+  "version": "0.0.1",
+  "description": "image creation using fractals",
+  "main": "rollup.config.js",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "Frank Wolf",
+  "license": "ISC",
+  "devDependencies": {
+    "rollup-plugin-livereload": "^1.0.0",
+    "rollup-plugin-serve": "^1.0.1"
+  }
+}

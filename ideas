@@ -1,0 +1,10 @@
+random walker
+- a dot randomly walking across the canvas from left to right
+
+diffusion limited aggregation (dla)
+- for tree-like fractals
+
+dla supported; brownian snowflakes
+- use dla on a section of a circle
+- mirror the section
+- copy the original/mirror-pairs to fill a full circle in order to get a snowflake pattern
