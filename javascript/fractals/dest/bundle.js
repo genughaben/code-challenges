@@ -151,9 +151,9 @@
   }
 
   class Snowflake {
-    constructor(segments, selector_id){
+    constructor(segments, canvasHelper){
       this.segments = segments;
-      this.canvasHelper = new CanvasHelper(selector_id);
+      this.canvasHelper = canvasHelper;
     }
 
     get length(){
@@ -188,25 +188,44 @@
     }
   }
 
+  let canvasWidth = 600;
+  let canvasHeight = 600;
+
+
   // triangle base
-  // let startSegment1 = Segment.createFromCoordinates(600,600,300,600);
-  // let startSegment2 = Segment.createFromCoordinates(300,600,450,340);
-  // let startSegment3 = Segment.createFromCoordinates(450,340,600,600);
+  let td = canvasWidth / 3; // triangleDimension
+  let td2 = (td / 10) * 11.33;
+  let triangleSegment1 = Segment.createFromCoordinates(td*2,td*2, td,td*2);
+  let triangleSegment2 = Segment.createFromCoordinates(td,td*2, td*1.5,td2);
+  let triangleSegment3 = Segment.createFromCoordinates(td*1.5,td2, td*2,td*2);
 
-  // square base
-  let startSegment1 = Segment.createFromCoordinates(600,600,300,600);
-  let startSegment2 = Segment.createFromCoordinates(300,600,300,300);
-  let startSegment3 = Segment.createFromCoordinates(300,300,600,300);
-  let startSegment4 = Segment.createFromCoordinates(600,300,600,600);
-
-  var segments = [
-    startSegment1,
-    startSegment2,
-    startSegment3,
-    startSegment4
+  var triangleSegments = [
+    triangleSegment1,
+    triangleSegment2,
+    triangleSegment3
   ];
 
-  let snowflake = new Snowflake(segments, "container");
+  // square base
+  let sd = canvasHeight/3; // sd = squareDimension
+  let squareSegment1 = Segment.createFromCoordinates(sd*2,sd*2,sd,sd*2);
+  let squareSegment2 = Segment.createFromCoordinates(sd,sd*2,sd,sd);
+  let squareSegment3 = Segment.createFromCoordinates(sd,sd,sd*2,sd);
+  let squareSegment4 = Segment.createFromCoordinates(sd*2,sd,sd*2,sd*2);
+
+  var squareSegments = [
+    squareSegment1,
+    squareSegment2,
+    squareSegment3,
+    squareSegment4
+  ];
+
+  var startShapes = {
+    "square": squareSegments,
+    "triangle": triangleSegments
+  };
+
+  let canvasHelper = new CanvasHelper("container", canvasWidth, canvasHeight);
+  let snowflake = new Snowflake(startShapes['triangle'], canvasHelper);
   snowflake.draw();
 
   document.body.addEventListener('click', function(){

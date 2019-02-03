@@ -2,9 +2,9 @@ import { CanvasHelper } from '../../lib/canvas.js';
 import { Segment } from '../../lib/segment.js';
 
 export class Snowflake {
-  constructor(segments, selector_id){
+  constructor(segments, canvasHelper){
     this.segments = segments;
-    this.canvasHelper = new CanvasHelper(selector_id);
+    this.canvasHelper = canvasHelper;
   }
 
   get length(){
