@@ -9,7 +9,9 @@
   "author": "Frank Wolf",
   "license": "ISC",
   "devDependencies": {
+    "rollup": "^1.0.0",
     "rollup-plugin-livereload": "^1.0.0",
-    "rollup-plugin-serve": "^1.0.1"
+    "rollup-plugin-serve": "^0.6.1",
+    "rollup-watch": "^4.3.1"
   }
 }

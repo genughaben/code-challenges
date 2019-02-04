@@ -1,4 +1,6 @@
-// import livereload from 'rollup-plugin-livereload';
+import serve from 'rollup-plugin-serve'
+import livereload from 'rollup-plugin-livereload';
+
 
 export default  {
   input: 'src/main.js',
@@ -7,7 +9,8 @@ export default  {
     format: 'iife',
     name: "snowflake"
   },
-  // plugins: [
-  //   livereload()
-  // ]
+  plugins: [
+    serve(),
+    livereload(),
+  ]
 }

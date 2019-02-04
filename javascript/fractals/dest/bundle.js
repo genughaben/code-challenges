@@ -1,3 +1,5 @@
+
+(function(l, i, v, e) { v = l.createElement(i); v.async = 1; v.src = '//' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1'; e = l.getElementsByTagName(i)[0]; e.parentNode.insertBefore(v, e)})(document, 'script');
 (function () {
   'use strict';
 
@@ -84,6 +86,12 @@
       x_dash = this._x * matrix[0][0] + this._y * matrix[0][1];
       y_dash = this._x * matrix[1][0] + this._y * matrix[1][1];
       return new Point(x_dash, y_dash);
+    }
+
+    draw(context, width=5){
+      context.beginPath();
+      context.arc(this._x, this._y, width, 0, 2 * Math.PI, true);
+      context.fill();
     }
 
     print() {
@@ -188,13 +196,19 @@
     }
   }
 
-  let canvasWidth = 600;
-  let canvasHeight = 600;
+  let canvasWidth = 400;
+  let canvasHeight = 400;
 
 
   // triangle base
-  let td = canvasWidth / 3; // triangleDimension
+  let td = canvasWidth / 2; // triangleDimension
   let td2 = (td / 10) * 11.33;
+  var p1 = [td*2, td*2]; // 400, 400
+  var p3 = [td, td*2]; //
+  console.log("test");
+  console.log(p1);
+  console.log(p1);
+  console.log(p3);
   let triangleSegment1 = Segment.createFromCoordinates(td*2,td*2, td,td*2);
   let triangleSegment2 = Segment.createFromCoordinates(td,td*2, td*1.5,td2);
   let triangleSegment3 = Segment.createFromCoordinates(td*1.5,td2, td*2,td*2);
@@ -226,7 +240,14 @@
 
   let canvasHelper = new CanvasHelper("container", canvasWidth, canvasHeight);
   let snowflake = new Snowflake(startShapes['triangle'], canvasHelper);
+
   snowflake.draw();
+
+  [1,2,3,4].forEach(function(i) {
+    snowflake.createChilden();
+    snowflake.draw();
+  });
+
 
   document.body.addEventListener('click', function(){
     snowflake.createChilden();

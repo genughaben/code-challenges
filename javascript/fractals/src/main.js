@@ -2,16 +2,20 @@ import { Snowflake } from './snowflake.js'
 import { Segment } from '../../lib/segment.js'
 import { CanvasHelper } from '../../lib/canvas.js'
 
-let canvasWidth = 600;
-let canvasHeight = 600;
+let canvasWidth = 400;
+let canvasHeight = 400;
 
 
 // triangle base
-let td = canvasWidth / 3; // triangleDimension
+let td = canvasWidth / 2; // triangleDimension
 let td2 = (td / 10) * 11.33;
-var p1 = (td*2, td*2); // 400, 400
-var p2 = (td*1.5, td2); // 300, 340
-var p3 = (td, td*2); //
+var p1 = [td*2, td*2]; // 400, 400
+var p2 = [td*1.5, td2]; // 300, 340
+var p3 = [td, td*2]; //
+console.log("test");
+console.log(p1);
+console.log(p2);
+console.log(p3);
 let triangleSegment1 = Segment.createFromCoordinates(td*2,td*2, td,td*2);
 let triangleSegment2 = Segment.createFromCoordinates(td,td*2, td*1.5,td2);
 let triangleSegment3 = Segment.createFromCoordinates(td*1.5,td2, td*2,td*2);
@@ -43,9 +47,16 @@ var startShapes = {
 
 let canvasHelper = new CanvasHelper("container", canvasWidth, canvasHeight);
 let snowflake = new Snowflake(startShapes['triangle'], canvasHelper);
-snowflake.draw()
+
+snowflake.draw();
+
+[1,2,3,4].forEach(function(i) {
+  snowflake.createChilden();
+  snowflake.draw();
+});
+
 
 document.body.addEventListener('click', function(){
-  snowflake.createChilden()
+  snowflake.createChilden();
   snowflake.draw();
 }, true);
