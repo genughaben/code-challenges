@@ -80,7 +80,7 @@ tensorflow-tensorboard==0.4.0rc2
 Theano==0.9.0
 udacity-pa==0.2.6
 uritemplate==3.0.0
-urllib3==1.22
+urllib3==1.26.5
 virtualenv==15.1.0
 Werkzeug==0.14.1
 yapf==0.22.0
